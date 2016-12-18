@@ -6,10 +6,11 @@ require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var points = tims.getPoints();
-
-  res.render('index', {
-    google_maps_api_key: process.env.GOOGLE_MAPS_API_KEY
+  getPoints(function(points) {
+      res.render('index', {
+          google_maps_api_key: process.env.GOOGLE_MAPS_API_KEY,
+          points: points
+      });
   });
 });
 

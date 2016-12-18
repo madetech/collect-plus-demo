@@ -14,7 +14,9 @@ var download = function(url, dest, cb) {
     });
 };
 
-getPoints = function() {
+getPoints = function(cb) {
+    var points = [];
+
     download(process.env.TIMS_FEED_URL, "./parser/latest.xml", function() {
         var parser = new xml2js.Parser();
 
@@ -25,12 +27,22 @@ getPoints = function() {
                 for (index = 0; index < no_of_disruptions; ++index) {
                     var disruption = result.Root.Disruptions[0].Disruption[index];
 
-                    var coordsLL = disruption.CauseArea[0].DisplayPoint[0].Point[0].coordinatesLL[0];
-                    console.log(coordsLL);
+                    // Get points
+                    var coordsLL = disruption.CauseArea[0].DisplayPoint[0].Point[0].coordinatesLL[0].split(",");
+
+                    disruptionPoint = {
+                        lng: parseFloat(coordsLL[0]),
+                        lat: parseFloat(coordsLL[1]),
+                        description: disruption.comments[0]
+                    };
+
+                    points.push(disruptionPoint);
                 }
+
+                cb(points);
             });
         });
-    })
+    });
 };
 
 exports.getPoints = getPoints;
