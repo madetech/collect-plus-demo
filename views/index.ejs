@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1ISNMMkHRFddAX_9AC4CfiF0cA12__EE"></script>
+    <script type="text/javascript" src="/javascripts/disruptions.js"></script>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body onload="initialize()">
+    <div id="map" style="width:100%; height:100%"></div>
   </body>
 </html>
