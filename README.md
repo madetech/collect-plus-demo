@@ -1,6 +1,8 @@
-# TIMS
+# Collect+ demo
 
-It uses Live Traffic Disruption (or TIMS) from here: https://api-portal.tfl.gov.uk/docs
+Make sure you run EFC on your localhost.
+
+Search is hardcoded to `SE1 0SW` which is Made Tech's office.
 
 No database is required to run this app, only Node.
 
@@ -23,7 +25,6 @@ And add your Google Maps API key in there.
 ## Run 
 
 To start server execute:
-
 
 ```
 node bin/wwww
